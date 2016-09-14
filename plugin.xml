@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-FPSscannerPlugin"
+        version="0.1.0">
+    <name>FPSPlugin</name>
+
+    <engines>
+        <engine name="cordova-android" version=">=3.6.0" /><!-- Requires CordovaPlugin.preferences -->
+    </engines>
+    <js-module src="www/FPSPlugin.js" name="FPSPlugin">
+        <clobbers target="cordova.plugins.FPSPlugin" />
+    </js-module>
+
+<platform name="android">
+
+
+ 	<config-file target="res/xml/config.xml" parent="/*">
+            <feature name="FpsPluging">
+                <param name="android-package" value="org.apache.cordova.FPSPlugin.FpsPluging"/>
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+      
+	<config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity
+                android:name="com.futronictech.FtrScanDemoUsbHostActivity"
+                android:clearTaskOnLaunch="true"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+                android:windowSoftInputMode="stateAlwaysHidden"
+                android:exported="false">
+            </activity>
+ 	</config-file>
+
+	 <config-file target="AndroidManifest.xml" parent="/manifest">
+             	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    		<uses-permission android:name="android.permission.USB_PERMISSION" />
+		<uses-feature android:name="android.hardware.usb.host" />
+        </config-file>
+  <source-file src="src/android/FpsPluging.java" target-dir="src/org/apache/cordova/FPSPlugin" />
+
+	 <framework src="src/android/app-debug.gradle" custom="true" type="gradleReference" />
+  	 <resource-file src="aar/app-debug.aar" target="aar/app-debug.aar" />
+   </platform>
+
+</plugin>

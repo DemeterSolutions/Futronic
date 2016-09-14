@@ -1,0 +1,26 @@
+var exec = require("cordova/exec");
+
+
+//function FingerScanner() {}
+
+var fingerScanner = {};
+
+/*FingerScanner.prototype.scan = function (successCB, errorCB) {
+        console.log("calling scan");
+        exec(successCB, errorCB, "FpsPluging", "scan",[""]);
+    };
+
+
+var fingerScanner = new FingerScanner();*/
+fingerScanner.scan = function (successCB, errorCB) {
+        console.log("calling scan");
+        exec(successCB, errorCB, "FpsPluging", "scan",[""]);
+    };
+ module.exports = fingerScanner;
+
+
+/*module.export = {
+    scan: function (settings, successCB, errorCB) {
+        cordova.exec(successCB, errorCB, "FpsPluging", "scan", settings);
+    }
+};*/
